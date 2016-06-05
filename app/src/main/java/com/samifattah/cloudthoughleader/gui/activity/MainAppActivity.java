@@ -77,7 +77,7 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
 
         m_FragmenstManager.addFragment(baseFragment,false);
 
-        this.setTitle("USMailPackageTracker");
+        this.setTitle("CloudThoughLeader");
 
     }
 
