@@ -3,9 +3,28 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/contactus"
-            android:title="Contact Us" />
+            android:id="@+id/experienceid"
+            android:title="Experience" />
     </group>
-
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/industriesid"
+            android:title="Industries" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/myvaluesid"
+            android:title="My Values" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/whymeid"
+            android:title="Why Me" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/contactmeid"
+            android:title="Contact me" />
+    </group>
 
 </menu>
