@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.samifattah.cloudthoughleader.R;
-import com.samifattah.cloudthoughleader.gui.fragment.TrackUSMailFragment;
+import com.samifattah.cloudthoughleader.gui.fragment.WebBroswerFragment;
 import com.samifattah.cloudthoughleader.util.BaseActivity;
 import com.samifattah.cloudthoughleader.util.BaseFragment;
 import com.samifattah.cloudthoughleader.util.FragmentsManager;
@@ -73,7 +73,7 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
 
         m_NavigationView.setNavigationItemSelectedListener(this);
 
-        BaseFragment baseFragment = new TrackUSMailFragment();
+        BaseFragment baseFragment = new WebBroswerFragment();
 
         m_FragmenstManager.addFragment(baseFragment,false);
 

@@ -1,6 +1,5 @@
 package com.samifattah.cloudthoughleader.gui.fragment;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,13 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.samifattah.cloudthoughleader.R;
-import com.samifattah.cloudthoughleader.dialogfragment.WarnDialogFragment;
 import com.samifattah.cloudthoughleader.util.BaseFragment;
 import com.samifattah.cloudthoughleader.util.FragmentsManager;
-import com.samifattah.cloudthoughleader.util.USPSHelper;
 import com.samifattah.cloudthoughleader.util.Utility;
 
-public class TrackUSMailFragment extends BaseFragment  implements USPSHelper.USPSHelperInterface, View.OnFocusChangeListener
+public class WebBroswerFragment extends BaseFragment  implements  View.OnFocusChangeListener
 {
     private Button   m_TrackButton              = null;
     private Button   m_ClearButton              = null;
@@ -31,7 +28,7 @@ public class TrackUSMailFragment extends BaseFragment  implements USPSHelper.USP
     {
     }
 
-    public TrackUSMailFragment()
+    public WebBroswerFragment()
     {
         Utility.logDebug(m_szTag,"TrackUSMailFragment");
 
@@ -87,86 +84,13 @@ public class TrackUSMailFragment extends BaseFragment  implements USPSHelper.USP
 
         if(v.getId()==m_TrackButton.getId())
         {
-            hideKeyboard();
-
-            String szTrackingNumber = m_TrackingNumberEditText.getText().toString();
-
-            if(!szTrackingNumber.isEmpty())
-            {
-
-                if(m_bCleared) {
-
-                    m_TrackButton.setEnabled(false);
-
-                    m_ClearButton.setEnabled(false);
-
-                    USPSHelper uSPSHelper = new USPSHelper();
-
-                    uSPSHelper.setInterface((USPSHelper.USPSHelperInterface) this);
-
-                    uSPSHelper.setTrackingNumber(szTrackingNumber);
-
-                    uSPSHelper.excute();
-
-                    m_bCleared = false;
-                }
-                else
-                {
-                    String szWarnMessage="Please Clear First";
-
-                    WarnDialogFragment warnDialogFragment = new WarnDialogFragment();
-
-                    warnDialogFragment.setMessage(szWarnMessage);
-
-                    m_FragmenstManager.showFragmentDialog(warnDialogFragment,false);
-                }
-            }
-            else
-            {
-                String szWarnMessage="The TrackID \nCan Not Be Empty";
-
-                WarnDialogFragment warnDialogFragment = new WarnDialogFragment();
-
-                warnDialogFragment.setMessage(szWarnMessage);
-
-                m_FragmenstManager.showFragmentDialog(warnDialogFragment,false);
-            }
 
         }
 
         if(v.getId()==m_ClearButton.getId())
         {
-            hideKeyboard();
-
-            m_TrackingNumberEditText.setText("");
-
-            m_TrackingResultEditText.setText("");
-
-            m_bCleared = true;
         }
 
-    }
-
-    @Override
-    public void signalFinish(final USPSHelper.USPSResponse uSPSResponse)
-    {
-        Utility.logDebug(m_szTag,uSPSResponse.m_szUSPSResponse);
-
-
-        this.getActivity().runOnUiThread(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                final String szResultFinal =  uSPSResponse.m_szUSPSResponse;
-
-                m_TrackingResultEditText.setText(szResultFinal);
-
-                m_TrackButton.setEnabled(true);
-
-                m_ClearButton.setEnabled(true);
-            }
-        });
     }
 
 
