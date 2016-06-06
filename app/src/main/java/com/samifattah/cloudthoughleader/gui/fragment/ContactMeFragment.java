@@ -88,12 +88,12 @@ public class ContactMeFragment extends BaseFragment
             {
 
 
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.putExtra(Intent.EXTRA_EMAIL, new String("mushib@gmail.com"));
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "mushib@gmail.com" });
                 intent.putExtra(Intent.EXTRA_SUBJECT, "question");
                 intent.putExtra(Intent.EXTRA_TEXT, "");
 
-                intent.setType("message/rfc822");
+                intent.setType("text/plain");
 
                 intent.setPackage("com.google.android.gm");
 
