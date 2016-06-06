@@ -110,32 +110,23 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
 
             m_FragmenstManager.replaceFragment(baseFragment,false);
 
-//            try {
-//
-//
-//                Intent intent = new Intent(Intent.ACTION_SEND);
-//                intent.putExtra(Intent.EXTRA_EMAIL, "oasf2010@gmail.com");
-//                intent.putExtra(Intent.EXTRA_SUBJECT, "question");
-//                intent.putExtra(Intent.EXTRA_TEXT, "");
-//
-//                intent.setType("message/rfc822");
-//
-//                intent.setPackage("com.google.android.gm");
-//
-//                startActivity(intent);
-//            } catch (android.content.ActivityNotFoundException ex) {
-//
-//            } finally {
-//
-//
-//            }
         }
 
         if (id == R.id.experienceid)
         {
             WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
 
-            webBroswerFragment.setURL("http://www.google.com");
+            webBroswerFragment.setURL("http://www.mushibhuiyan.com/bio/experience/");
+
+            m_FragmenstManager.replaceFragment(webBroswerFragment,false);
+
+        }
+
+        if (id == R.id.achievement)
+        {
+            WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
+
+            webBroswerFragment.setURL("http://www.mushibhuiyan.com/achievements/");
 
             m_FragmenstManager.replaceFragment(webBroswerFragment,false);
 
@@ -145,7 +136,7 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
         {
             WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
 
-            webBroswerFragment.setURL("http://www.cnn.com");
+            webBroswerFragment.setURL("http://www.mushibhuiyan.com/bio/industries/");
 
             m_FragmenstManager.replaceFragment(webBroswerFragment,false);
 
@@ -155,7 +146,7 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
         {
             WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
 
-            webBroswerFragment.setURL("http://www.yahoo.com");
+            webBroswerFragment.setURL("http://www.mushibhuiyan.com/bio/my-values/");
 
             m_FragmenstManager.replaceFragment(webBroswerFragment,false);
 
@@ -165,7 +156,7 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
         {
             WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
 
-            webBroswerFragment.setURL("http://www.cnbc.com");
+            webBroswerFragment.setURL("http://www.mushibhuiyan.com/why-me/");
 
             m_FragmenstManager.replaceFragment(webBroswerFragment,false);
 

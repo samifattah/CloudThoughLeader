@@ -23,7 +23,7 @@ public class WebBroswerFragment extends BaseFragment
     private FragmentsManager m_FragmenstManager = null;
     private java.lang.String m_szURL            = "";
 
-    public interface TrackUSMailFragmentFragmentInterface extends BaseFragmentInterface
+    public interface WebBroswerFragmentFragmentInterface extends BaseFragmentInterface
     {
     }
 
