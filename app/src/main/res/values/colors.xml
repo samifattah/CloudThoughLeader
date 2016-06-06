@@ -3,4 +3,51 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="black">#000000</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+
+    <color name="appTransparent">#00000000</color>
+    <color name="appBackgroundColor">#FFCBD2D8</color>
+    <color name="previewBackgroundColor">#FF000000</color>
+    <color name="forgotPasswordTextColor">#FF27365D</color>
+    <color name="forgotPasswordShadowColor">#FF27365D</color>
+    <color name="buttonGradient1Color">#FFBEBEBE</color>
+    <color name="buttonGradient2Color">#FF000000</color>
+    <color name="buttonStrokeColor">#FFFFFFFF</color>
+
+    <color name="textColor">#FF000000</color>
+    <color name="textShadowColor">#FFFFFFFF</color>
+    <color name="headerTextColor">#FF000000</color>
+    <color name="headerTextShadowColor">#FF27365D</color>
+
+    <color name="buttonTextShadowColor">#FF000000</color>
+    <color name="buttonTextColor">#FFFFFFFF</color>
+    <color name="buttonSmallTextShadowColor">#FF000000</color>
+    <color name="buttonSmallTextColor">#FFFFFFFF</color>
+    <color name="buttonBigTextShadowColor">#FF000000</color>
+    <color name="buttonBigTextColor">#FFFFFFFF</color>
+    <color name="buttonVeryBigTextShadowColor">#FF000000</color>
+    <color name="buttonVeryBigTextColor">#FFFFFFFF</color>
+
+    <color name="mediaList_BackgroundColor">#FF000000</color>
+    <color name="mediaList_ListDividerColor">#FFFFFFFF</color>
+    <color name="mediaList_ListSelectedColor">#FF00FF00</color>
+
+    <color name="mediaListItemGradient1Color">#FFBEBEBE</color>
+    <color name="mediaListItemGradient2Color">#FF000000</color>
+    <color name="mediaListItemSelectedGradient1Color">#FFD40000</color>
+    <color name="mediaListItemSelectedGradient2Color">#FFD40000</color>
+    <color name="mediaListItemNameTextColor">#FFFFFFFF</color>
+    <color name="mediaListItemNameTextShadowColor">#FF000000</color>
+    <color name="mediaListItemDateTextColor">#FFFFFFFF</color>
+    <color name="mediaListItemDateTextShadowColor">#FF000000</color>
+    <color name="mediaListItemStatusTextColor">#FFFFFFFF</color>
+    <color name="mediaListItemStatusTextShadowColor">#FF000000</color>
+
 </resources>

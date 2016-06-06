@@ -1,6 +1,8 @@
 package com.samifattah.cloudthoughleader.gui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +17,13 @@ import com.samifattah.cloudthoughleader.util.BaseFragment;
 import com.samifattah.cloudthoughleader.util.FragmentsManager;
 import com.samifattah.cloudthoughleader.util.Utility;
 
-public class ContactMeFragment extends BaseFragment  implements  View.OnFocusChangeListener
+public class ContactMeFragment extends BaseFragment
 {
-    private Button   m_TrackButton              = null;
-    private Button   m_ClearButton              = null;
-    private EditText m_TrackingNumberEditText   = null;
-    private TextView m_TrackingResultEditText   = null;
+    private Button   m_CallMeButton              = null;
+    private Button   m_EmailMeButton              = null;
     private FragmentsManager m_FragmenstManager = null;
-    private boolean m_bCleared = true;
 
-    public interface TrackUSMailFragmentFragmentInterface extends BaseFragmentInterface
+    public interface ContactMeFragmentFragmentInterface extends BaseFragmentInterface
     {
     }
 
@@ -47,31 +46,25 @@ public class ContactMeFragment extends BaseFragment  implements  View.OnFocusCha
 
         super.onCreateView(inflater, container, savedInstanceState);
 
-//        m_TrackButton                 = (Button) m_View.findViewById(R.id.TrackButtonID);
-//        m_ClearButton                 = (Button) m_View.findViewById(R.id.ClearButtonID);
-//        m_TrackingNumberEditText      = (EditText) m_View.findViewById(R.id.TrackEditTextID);
-//        m_TrackingResultEditText      = (TextView) m_View.findViewById(R.id.TrackResultEditTextID);
-//
-//        Utility.Assert(m_TrackButton!=null);
-//        Utility.Assert(m_ClearButton!=null);
-//        Utility.Assert(m_TrackingNumberEditText!=null);
-//        Utility.Assert(m_TrackingResultEditText!=null);
-//
-//        if(m_TrackButton!=null)
-//        {
-//            m_TrackButton.setOnClickListener(this);
-//        }
-//
-//        if(m_ClearButton!=null)
-//        {
-//            m_ClearButton.setOnClickListener(this);
-//        }
-//
-//        m_TrackingNumberEditText.setOnFocusChangeListener(this);
-//
-//        m_FragmenstManager = new FragmentsManager(this.getActivity(),0);
-//
-//        Utility.Assert(m_FragmenstManager!=null);
+        m_CallMeButton                 = (Button) m_View.findViewById(R.id.CallMeButtonID);
+        m_EmailMeButton                = (Button) m_View.findViewById(R.id.EmailMeButtonID);
+
+        Utility.Assert(m_CallMeButton!=null);
+        Utility.Assert(m_EmailMeButton!=null);
+
+        if(m_CallMeButton!=null)
+        {
+            m_CallMeButton.setOnClickListener(this);
+        }
+
+        if(m_EmailMeButton!=null)
+        {
+            m_EmailMeButton.setOnClickListener(this);
+        }
+
+        m_FragmenstManager = new FragmentsManager(this.getActivity(),0);
+
+        Utility.Assert(m_FragmenstManager!=null);
 
         return m_View;
     }
@@ -82,32 +75,41 @@ public class ContactMeFragment extends BaseFragment  implements  View.OnFocusCha
 
         Utility.logDebug(m_szTag,"handleClick");
 
-        if(v.getId()==m_TrackButton.getId())
+        if(v.getId()==m_CallMeButton.getId())
         {
-
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:+19175896702"));
+            startActivity(intent);
         }
 
-        if(v.getId()==m_ClearButton.getId())
+        if(v.getId()==m_EmailMeButton.getId())
         {
+            try
+            {
+
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.putExtra(Intent.EXTRA_EMAIL, new String("mushib@gmail.com"));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "question");
+                intent.putExtra(Intent.EXTRA_TEXT, "");
+
+                intent.setType("message/rfc822");
+
+                intent.setPackage("com.google.android.gm");
+
+                startActivity(intent);
+            }
+            catch (android.content.ActivityNotFoundException ex)
+            {
+
+            }
+            finally
+            {
+
+
+            }
         }
 
     }
 
-
-    @Override
-    public void onFocusChange(View v, boolean hasFocus)
-    {
-        if(!hasFocus)
-        {
-            hideKeyboard();
-        }
-    }
-
-
-    private void hideKeyboard()
-    {
-        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        imm.hideSoftInputFromWindow(m_TrackingNumberEditText.getWindowToken(), 0);
-    }
 }

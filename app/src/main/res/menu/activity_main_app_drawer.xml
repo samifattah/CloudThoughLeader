@@ -6,6 +6,13 @@
             android:id="@+id/experienceid"
             android:title="Experience" />
     </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/achievement"
+            android:title="Achievement" />
+    </group>
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/industriesid"
