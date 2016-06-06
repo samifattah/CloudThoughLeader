@@ -184,14 +184,13 @@ public class FragmentsManager
         if(fragmentTransaction!=null)
         {
 
-            fragmentTransaction.replace(m_ContainerViewId, baseFragment, baseFragment.getFragmentName());
-
-            m_ActiveBaseFragment = baseFragment;
-
             if(baseFragment!=null)
             {
                 fragmentTransaction.replace(m_ContainerViewId, baseFragment, baseFragment.getFragmentName());
             }
+
+            m_ActiveBaseFragment = baseFragment;
+
 
             if (bAddToBackStatck)
             {

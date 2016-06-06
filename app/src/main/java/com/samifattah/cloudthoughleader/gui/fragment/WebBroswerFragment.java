@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,14 +17,11 @@ import com.samifattah.cloudthoughleader.util.BaseFragment;
 import com.samifattah.cloudthoughleader.util.FragmentsManager;
 import com.samifattah.cloudthoughleader.util.Utility;
 
-public class WebBroswerFragment extends BaseFragment  implements  View.OnFocusChangeListener
+public class WebBroswerFragment extends BaseFragment
 {
-    private Button   m_TrackButton              = null;
-    private Button   m_ClearButton              = null;
-    private EditText m_TrackingNumberEditText   = null;
-    private TextView m_TrackingResultEditText   = null;
+    private WebView          m_WebView          = null;
     private FragmentsManager m_FragmenstManager = null;
-    private boolean m_bCleared = true;
+    private java.lang.String m_szURL            = "";
 
     public interface TrackUSMailFragmentFragmentInterface extends BaseFragmentInterface
     {
@@ -30,11 +29,11 @@ public class WebBroswerFragment extends BaseFragment  implements  View.OnFocusCh
 
     public WebBroswerFragment()
     {
-        Utility.logDebug(m_szTag,"TrackUSMailFragment");
+        Utility.logDebug(m_szTag,"WebBroswerFragment");
 
-        m_szTag = new String("TrackUSMailFragment");
+        m_szTag = new String("WebBroswerFragment");
 
-        m_iLayoutID = R.layout.fragment_track_us_mail_package;
+        m_iLayoutID = R.layout.fragment_web_browser;
 
         m_szFragmentName = new String(m_szTag);
 
@@ -47,27 +46,24 @@ public class WebBroswerFragment extends BaseFragment  implements  View.OnFocusCh
 
         super.onCreateView(inflater, container, savedInstanceState);
 
-        m_TrackButton                 = (Button) m_View.findViewById(R.id.TrackButtonID);
-        m_ClearButton                 = (Button) m_View.findViewById(R.id.ClearButtonID);
-        m_TrackingNumberEditText      = (EditText) m_View.findViewById(R.id.TrackEditTextID);
-        m_TrackingResultEditText      = (TextView) m_View.findViewById(R.id.TrackResultEditTextID);
+        m_WebView  = (WebView) m_View.findViewById(R.id.webViewid);
 
-        Utility.Assert(m_TrackButton!=null);
-        Utility.Assert(m_ClearButton!=null);
-        Utility.Assert(m_TrackingNumberEditText!=null);
-        Utility.Assert(m_TrackingResultEditText!=null);
+        Utility.Assert(m_WebView!=null);
 
-        if(m_TrackButton!=null)
+        if(m_WebView!=null)
         {
-            m_TrackButton.setOnClickListener(this);
-        }
+            m_WebView.loadUrl(m_szURL);
 
-        if(m_ClearButton!=null)
-        {
-            m_ClearButton.setOnClickListener(this);
+            m_WebView.setWebViewClient(new WebViewClient()
+            {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url)
+                {
+                    view.loadUrl(url);
+                    return true;
+                }
+            });
         }
-
-        m_TrackingNumberEditText.setOnFocusChangeListener(this);
 
         m_FragmenstManager = new FragmentsManager(this.getActivity(),0);
 
@@ -81,33 +77,14 @@ public class WebBroswerFragment extends BaseFragment  implements  View.OnFocusCh
     {
 
         Utility.logDebug(m_szTag,"handleClick");
-
-        if(v.getId()==m_TrackButton.getId())
-        {
-
-        }
-
-        if(v.getId()==m_ClearButton.getId())
-        {
-        }
-
     }
 
-
-    @Override
-    public void onFocusChange(View v, boolean hasFocus)
+    public void setURL(String szURL)
     {
-        if(!hasFocus)
-        {
-            hideKeyboard();
-        }
+
+        Utility.logDebug(m_szTag,"navigate");
+
+        m_szURL = new String(szURL);
     }
 
-
-    private void hideKeyboard()
-    {
-        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        imm.hideSoftInputFromWindow(m_TrackingNumberEditText.getWindowToken(), 0);
-    }
 }

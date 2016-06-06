@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.samifattah.cloudthoughleader.R;
+import com.samifattah.cloudthoughleader.gui.fragment.ContactMeFragment;
 import com.samifattah.cloudthoughleader.gui.fragment.WebBroswerFragment;
 import com.samifattah.cloudthoughleader.util.BaseActivity;
 import com.samifattah.cloudthoughleader.util.BaseFragment;
@@ -73,7 +74,7 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
 
         m_NavigationView.setNavigationItemSelectedListener(this);
 
-        BaseFragment baseFragment = new WebBroswerFragment();
+        BaseFragment baseFragment = new ContactMeFragment();
 
         m_FragmenstManager.addFragment(baseFragment,false);
 
@@ -98,38 +99,76 @@ public class MainAppActivity extends BaseActivity implements NavigationView.OnNa
 
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
-    {
+    public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
 
 
         if (id == R.id.contactmeid)
         {
-            try
-            {
+            BaseFragment baseFragment = new ContactMeFragment();
 
+            m_FragmenstManager.replaceFragment(baseFragment,false);
 
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_EMAIL, "oasf2010@gmail.com");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "question");
-                intent.putExtra(Intent.EXTRA_TEXT, "");
+//            try {
+//
+//
+//                Intent intent = new Intent(Intent.ACTION_SEND);
+//                intent.putExtra(Intent.EXTRA_EMAIL, "oasf2010@gmail.com");
+//                intent.putExtra(Intent.EXTRA_SUBJECT, "question");
+//                intent.putExtra(Intent.EXTRA_TEXT, "");
+//
+//                intent.setType("message/rfc822");
+//
+//                intent.setPackage("com.google.android.gm");
+//
+//                startActivity(intent);
+//            } catch (android.content.ActivityNotFoundException ex) {
+//
+//            } finally {
+//
+//
+//            }
+        }
 
-                intent.setType("message/rfc822");
+        if (id == R.id.experienceid)
+        {
+            WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
 
-                intent.setPackage("com.google.android.gm");
+            webBroswerFragment.setURL("http://www.google.com");
 
-                startActivity(intent);
-            }
-            catch(android.content.ActivityNotFoundException ex)
-            {
+            m_FragmenstManager.replaceFragment(webBroswerFragment,false);
 
-            }
-            finally
-            {
+        }
 
+        if (id == R.id.industriesid)
+        {
+            WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
 
-            }
+            webBroswerFragment.setURL("http://www.cnn.com");
+
+            m_FragmenstManager.replaceFragment(webBroswerFragment,false);
+
+        }
+
+        if (id == R.id.myvaluesid)
+        {
+            WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
+
+            webBroswerFragment.setURL("http://www.yahoo.com");
+
+            m_FragmenstManager.replaceFragment(webBroswerFragment,false);
+
+        }
+
+        if (id == R.id.whymeid)
+        {
+            WebBroswerFragment webBroswerFragment = new WebBroswerFragment();
+
+            webBroswerFragment.setURL("http://www.cnbc.com");
+
+            m_FragmenstManager.replaceFragment(webBroswerFragment,false);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
